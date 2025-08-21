@@ -4,19 +4,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const loginFormContainer = document.getElementById('login-form-container');
     const loginForm = document.getElementById('login-form');
     const loginMessage = document.getElementById('login-message');
-    const welcomeMessage = document.getElementById('welcome-message');
     const tradesTableBody = document.getElementById('trades-table-body');
-    const logoutBtn = document.getElementById('logout-btn');
     const logoutDropdown = document.getElementById('logout-dropdown');
     const showLoginBtn = document.getElementById('show-login-btn');
     const sidebarToggle = document.getElementById('sidebar-toggle');
-    const sidebar = document.getElementById('sidebar');
+    const sidebar = document.querySelector('.sidebar');
 
-    // Mock data para trades recientes
+    // Mock data para trades recientes (adaptado a CoreUI table)
     const mockTrades = [
-        { id: 1, amount: 100, price: 500, date: '2025-08-20' },
-        { id: 2, amount: 250, price: 1200, date: '2025-08-19' },
-        { id: 3, amount: 50, price: 300, date: '2025-08-18' }
+        { user: 'John Doe', country: 'MX', usage: '25%', payment: 'Credit Card', activity: '10 min' },
+        { user: 'Jane Smith', country: 'MX', usage: '42%', payment: 'PayPal', activity: '22 min' },
+        { user: 'Mike Johnson', country: 'MX', usage: '74%', payment: 'Credit Card', activity: '1 hr' },
+        { user: 'Anna Lee', country: 'MX', usage: '18%', payment: 'Wire', activity: '3 hr' },
+        { user: 'David Brown', country: 'MX', usage: '65%', payment: 'Credit Card', activity: '5 hr' }
     ];
 
     // Mostrar formulario de login
@@ -26,10 +26,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Función para mostrar dashboard
-    function showDashboard(username) {
+    function showDashboard() {
         landingSection.classList.add('hidden');
         dashboardSection.classList.remove('hidden');
-        welcomeMessage.textContent = `¡Hola, ${username}! Aquí tu dashboard de trading de carbono.`;
         populateTradesTable();
     }
 
@@ -39,10 +38,12 @@ document.addEventListener('DOMContentLoaded', () => {
         mockTrades.forEach(trade => {
             const row = document.createElement('tr');
             row.innerHTML = `
-                <td>${trade.id}</td>
-                <td>${trade.amount}</td>
-                <td>${trade.price}</td>
-                <td>${trade.date}</td>
+                <td class="text-center"><div class="avatar"><img src="https://via.placeholder.com/128x128" class="img-avatar" alt="${trade.user}"><span class="avatar-status bg-success"></span></div></td>
+                <td><div>${trade.user}</div><div class="small text-muted"><span>New</span> | Registered: Jan 1, 2025</div></td>
+                <td class="text-center"><i class="flag-icon flag-icon-mx h4 mb-0" title="Mexico"></i></td>
+                <td><div class="small text-muted">Last login</div><strong>${trade.activity}</strong></td>
+                <td><div class="chart-wrapper"><div class="chart-placeholder" style="height:20px; width: ${trade.usage}; background-color: #20a8d8;"></div></div></td>
+                <td>${trade.payment}</td>
             `;
             tradesTableBody.appendChild(row);
         });
@@ -55,13 +56,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const password = document.getElementById('password').value;
 
         if (username === 'admin' && password === '123') {
-            showDashboard(username);
+            showDashboard();
         } else {
             loginMessage.textContent = 'Credenciales inválidas. Intenta de nuevo.';
         }
     });
 
-    // Logout (desde sidebar o dropdown)
+    // Logout
     function handleLogout() {
         dashboardSection.classList.add('hidden');
         landingSection.classList.remove('hidden');
@@ -70,10 +71,9 @@ document.addEventListener('DOMContentLoaded', () => {
         loginMessage.textContent = '';
     }
 
-    logoutBtn.addEventListener('click', handleLogout);
     if (logoutDropdown) logoutDropdown.addEventListener('click', handleLogout);
 
-    // Toggle sidebar (para mobile)
+    // Toggle sidebar
     sidebarToggle.addEventListener('click', () => {
         sidebar.classList.toggle('show');
     });
