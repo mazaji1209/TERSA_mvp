@@ -1,63 +1,59 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const loginSection = document.getElementById('login-section');
+    const landingSection = document.getElementById('landing-section');
     const dashboardSection = document.getElementById('dashboard-section');
-    const tradeSection = document.getElementById('trade-section');
+    const loginFormContainer = document.getElementById('login-form-container');
     const loginForm = document.getElementById('login-form');
     const loginMessage = document.getElementById('login-message');
     const welcomeMessage = document.getElementById('welcome-message');
-    const creditsTableBody = document.querySelector('#credits-table tbody');
+    const tradesTableBody = document.getElementById('trades-table-body');
     const logoutBtn = document.getElementById('logout-btn');
-    const tradeForm = document.getElementById('trade-form');
-    const tradeMessage = document.getElementById('trade-message');
-    const backBtn = document.getElementById('back-btn');
+    const logoutDropdown = document.getElementById('logout-dropdown');
+    const showLoginBtn = document.getElementById('show-login-btn');
+    const sidebarToggle = document.getElementById('sidebar-toggle');
+    const sidebar = document.getElementById('sidebar');
 
-    // Mock data para créditos de carbono (simulando API)
-    const mockCredits = [
-        { id: 1, amount: 100, price: 500 },
-        { id: 2, amount: 250, price: 1200 },
-        { id: 3, amount: 50, price: 300 }
+    // Mock data para trades recientes
+    const mockTrades = [
+        { id: 1, amount: 100, price: 500, date: '2025-08-20' },
+        { id: 2, amount: 250, price: 1200, date: '2025-08-19' },
+        { id: 3, amount: 50, price: 300, date: '2025-08-18' }
     ];
+
+    // Mostrar formulario de login
+    showLoginBtn.addEventListener('click', () => {
+        loginFormContainer.classList.remove('hidden');
+        showLoginBtn.classList.add('hidden');
+    });
 
     // Función para mostrar dashboard
     function showDashboard(username) {
-        loginSection.classList.add('hidden');
+        landingSection.classList.add('hidden');
         dashboardSection.classList.remove('hidden');
-        welcomeMessage.textContent = `¡Hola, ${username}! Aquí tus opciones para tradear bonos de carbono en MXN.`;
-        populateCreditsTable();
+        welcomeMessage.textContent = `¡Hola, ${username}! Aquí tu dashboard de trading de carbono.`;
+        populateTradesTable();
     }
 
-    // Poblar tabla de créditos
-    function populateCreditsTable() {
-        creditsTableBody.innerHTML = '';
-        mockCredits.forEach(credit => {
+    // Poblar tabla de trades
+    function populateTradesTable() {
+        tradesTableBody.innerHTML = '';
+        mockTrades.forEach(trade => {
             const row = document.createElement('tr');
             row.innerHTML = `
-                <td>${credit.id}</td>
-                <td>${credit.amount}</td>
-                <td>${credit.price}</td>
-                <td><button class="trade-btn" data-id="${credit.id}">Tradear</button></td>
+                <td>${trade.id}</td>
+                <td>${trade.amount}</td>
+                <td>${trade.price}</td>
+                <td>${trade.date}</td>
             `;
-            creditsTableBody.appendChild(row);
-        });
-
-        // Agregar event listeners a botones de trade
-        document.querySelectorAll('.trade-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                const creditId = e.target.dataset.id;
-                dashboardSection.classList.add('hidden');
-                tradeSection.classList.remove('hidden');
-                document.getElementById('credit-id').value = creditId;
-            });
+            tradesTableBody.appendChild(row);
         });
     }
 
-    // Login simulado (sin backend, solo check básico)
+    // Login simulado
     loginForm.addEventListener('submit', (e) => {
         e.preventDefault();
         const username = document.getElementById('username').value;
         const password = document.getElementById('password').value;
 
-        // Mock auth: usuario 'admin' / pass '123'
         if (username === 'admin' && password === '123') {
             showDashboard(username);
         } else {
@@ -65,25 +61,20 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Logout
-    logoutBtn.addEventListener('click', () => {
+    // Logout (desde sidebar o dropdown)
+    function handleLogout() {
         dashboardSection.classList.add('hidden');
-        loginSection.classList.remove('hidden');
+        landingSection.classList.remove('hidden');
+        loginFormContainer.classList.add('hidden');
+        showLoginBtn.classList.remove('hidden');
         loginMessage.textContent = '';
-    });
+    }
 
-    // Trade simulado
-    tradeForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const creditId = document.getElementById('credit-id').value;
-        const amount = document.getElementById('amount').value;
-        tradeMessage.textContent = `¡Compra simulada! Crédito ID ${creditId} por ${amount} tCO2e. En producción, esto se integraría con blockchain y pagos.`;
-    });
+    logoutBtn.addEventListener('click', handleLogout);
+    if (logoutDropdown) logoutDropdown.addEventListener('click', handleLogout);
 
-    // Volver al dashboard
-    backBtn.addEventListener('click', () => {
-        tradeSection.classList.add('hidden');
-        dashboardSection.classList.remove('hidden');
-        tradeMessage.textContent = '';
+    // Toggle sidebar (para mobile)
+    sidebarToggle.addEventListener('click', () => {
+        sidebar.classList.toggle('show');
     });
 });
