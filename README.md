@@ -1,1 +1,0 @@
-# TERSA_mvp
