@@ -1,113 +1,68 @@
-/* CoreUI inspired styles */
+/* Estilos generales */
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    background-color: #e4e5e6;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 0;
 }
 
-.app {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
+/* Encabezado */
+header {
+    background-color: #2C3E50;
+    padding: 20px;
+    color: white;
 }
 
-.app-header {
-    height: 56px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+header .logo h1 {
+    margin: 0;
+    font-size: 2rem;
 }
 
-.navbar-brand-full { display: block; }
-.navbar-brand-minimized { display: none; }
-
-@media (max-width: 575.98px) {
-    .navbar-brand-full { display: none; }
-    .navbar-brand-minimized { display: block; }
+header nav ul {
+    list-style: none;
+    padding: 0;
 }
 
-.sidebar {
-    width: 200px;
-    background-color: #2f353a !important;
-    color: #fff;
-    transition: width 0.3s;
-    overflow-y: auto;
+header nav ul li {
+    display: inline;
+    margin-right: 20px;
 }
 
-.sidebar .nav-link {
-    color: #c8ced3;
-    padding: 10px 15px;
+header nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 1rem;
 }
 
-.sidebar .nav-link:hover {
-    color: #fff;
-    background-color: #20a8d8;
+header nav ul li a:hover {
+    color: #3498db;
 }
 
-.sidebar .nav-title {
-    padding: 10px 15px;
-    color: #73818f;
-    text-transform: uppercase;
-    font-size: 0.8rem;
+header nav ul li a.active {
+    color: #e74c3c; /* Resaltado en rojo para "Iniciar sesión" */
 }
 
-.sidebar .badge {
-    margin-left: 5px;
+/* Sección Principal */
+.main-content {
+    padding: 40px;
+    text-align: center;
 }
 
-.main {
-    background-color: #e4e5e6;
-    padding: 15px;
+.main-content img {
+    max-width: 100%;
+    height: auto;
 }
 
-.breadcrumb {
-    background-color: #fff;
-    border-radius: 0.25rem;
-    margin-bottom: 1rem;
+/* Secciones */
+section {
+    padding: 40px 0;
 }
 
-.card {
-    border: none;
-    box-shadow: 0 1px 1px rgba(0,0,0,0.05);
-}
-
-.card.text-white .card-body {
-    padding: 1.25rem;
-}
-
-.text-value {
-    font-size: 1.5rem;
-    font-weight: 600;
-}
-
-.chart-wrapper {
-    position: relative;
-}
-
-.chart-placeholder {
-    width: 100%;
-    border-radius: 4px;
-    opacity: 0.5;
-}
-
-.bg-info { background-color: #20a8d8 !important; }
-.bg-success { background-color: #4dbd74 !important; }
-.bg-warning { background-color: #ffc107 !important; }
-.bg-danger { background-color: #f86c6b !important; }
-
-.hidden {
-    display: none;
-}
-
-@media (max-width: 991.98px) {
-    .sidebar {
-        position: fixed;
-        left: -200px;
-        top: 56px;
-        height: calc(100vh - 56px);
-        transition: left 0.3s;
-    }
-    .sidebar.show {
-        left: 0;
-    }
-    .main {
-        margin-left: 0 !important;
-    }
+/* Estilos del Pie de Página */
+footer {
+    background-color: #2C3E50;
+    color: white;
+    text-align: center;
+    padding: 10px;
 }
