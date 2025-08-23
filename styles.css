@@ -49,12 +49,26 @@ header nav ul li a {
     text-decoration: none;
     color: #bdc3c7; /* Gris claro como en la plantilla */
     font-size: 1rem;
-    transition: color 0.3s;
+    transition: color 0.3s, background-color 0.3s;
+    padding: 10px 15px; /* Padding base para consistencia */
+    border-radius: 5px;
 }
 
-header nav ul li a:hover,
+header nav ul li a:hover {
+    color: #ffffff; /* Blanco al hover */
+    background-color: rgba(255, 255, 255, 0.1); /* Fondo sutil al hover para enlaces normales */
+}
+
 header nav ul li a.active {
-    color: #ffffff; /* Blanco al hover/activo */
+    background-color: #e67e22; /* Mismo naranja que el CTA */
+    color: #ffffff; /* Texto blanco */
+    font-weight: bold; /* Para que destaque más como botón */
+    padding: 10px 20px; /* Padding extra para que se vea como botón */
+    border-radius: 5px;
+}
+
+header nav ul li a.active:hover {
+    background-color: #d35400; /* Oscurece al hover, como el CTA */
 }
 
 /* Hero section (principal cambio: flex como en la plantilla, degradado) */
