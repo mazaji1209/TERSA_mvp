@@ -1,68 +1,182 @@
-/* Estilos generales */
+/* Estilos generales (fondo oscuro como en la plantilla) */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background-color: #1c1c1c;
+    color: #ffffff;
     margin: 0;
     padding: 0;
+    line-height: 1.6;
 }
 
-/* Encabezado */
+/* Encabezado (minimalista, alineado como en la plantilla) */
 header {
-    background-color: #2C3E50;
-    padding: 20px;
-    color: white;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparente para overlay */
+    padding: 20px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed; /* Fijo en top para scroll */
+    width: 100%;
+    top: 0;
+    z-index: 1000;
 }
 
-header .logo h1 {
-    margin: 0;
-    font-size: 2rem;
+.logo-circle {
+    background-color: #e67e22; /* Naranja como en la plantilla */
+    color: #ffffff;
+    font-size: 1.5rem;
+    font-weight: bold;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 header nav ul {
     list-style: none;
     padding: 0;
+    margin: 0;
+    display: flex;
 }
 
 header nav ul li {
-    display: inline;
-    margin-right: 20px;
+    margin-left: 30px;
 }
 
 header nav ul li a {
     text-decoration: none;
-    color: white;
+    color: #bdc3c7; /* Gris claro como en la plantilla */
     font-size: 1rem;
+    transition: color 0.3s;
 }
 
-header nav ul li a:hover {
-    color: #3498db;
-}
-
+header nav ul li a:hover,
 header nav ul li a.active {
-    color: #e74c3c; /* Resaltado en rojo para "Iniciar sesión" */
+    color: #ffffff; /* Blanco al hover/activo */
 }
 
-/* Sección Principal */
-.main-content {
-    padding: 40px;
-    text-align: center;
+/* Hero section (principal cambio: flex como en la plantilla, degradado) */
+.hero {
+    background: linear-gradient(to bottom, #2c3e50, #1c1c1c); /* Degradado oscuro */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 150px 50px 100px; /* Espacio para header fijo */
+    min-height: 80vh;
 }
 
-.main-content img {
+.hero-text {
+    flex: 1;
+    max-width: 50%;
+    padding-right: 50px;
+}
+
+.hero-text h1 {
+    font-size: 3.5rem; /* Grande como en la plantilla */
+    font-weight: 700;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.hero-text p {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+}
+
+.cta-btn {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: #e67e22; /* Naranja como logo */
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.cta-btn:hover {
+    background-color: #d35400;
+}
+
+.hero-image {
+    flex: 1;
+}
+
+.hero-image img {
     max-width: 100%;
     height: auto;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
 }
 
-/* Secciones */
+/* Otras secciones (padding consistente) */
 section {
-    padding: 40px 0;
+    padding: 80px 50px;
 }
 
-/* Estilos del Pie de Página */
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+}
+
+/* Formulario (estilos limpios) */
+form input,
+form button {
+    padding: 12px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+}
+
+form input {
+    width: 100%;
+    margin-bottom: 20px;
+    background-color: #333;
+    color: #ffffff;
+}
+
+form button {
+    background-color: #3498db;
+    color: #ffffff;
+    cursor: pointer;
+    width: 100%;
+}
+
+form button:hover {
+    background-color: #2980b9;
+}
+
+/* Pie de página */
 footer {
-    background-color: #2C3E50;
-    color: white;
+    background-color: #333;
+    color: #bdc3c7;
     text-align: center;
-    padding: 10px;
+    padding: 20px;
+}
+
+/* Responsivo básico (para móviles, como en plantillas modernas) */
+@media (max-width: 768px) {
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 120px 20px 50px;
+    }
+    .hero-text {
+        max-width: 100%;
+        padding-right: 0;
+        margin-bottom: 40px;
+    }
+    header {
+        flex-direction: column;
+        padding: 10px;
+    }
+    header nav ul {
+        flex-direction: column;
+        margin-top: 10px;
+    }
+    header nav ul li {
+        margin: 10px 0;
+    }
 }

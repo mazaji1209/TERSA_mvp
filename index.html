@@ -4,32 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Plataforma de Trading de Bonos de Carbono</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <script src="js/main.js" defer></script>
+    <link rel="stylesheet" href="styles.css">
+    <script src="main.js" defer></script>
 </head>
 <body>
 
-    <!-- Encabezado -->
+    <!-- Encabezado (navegación minimalista como en la plantilla) -->
     <header>
         <div class="logo">
-            <h1>Plataforma de Trading de Bonos de Carbono</h1>
+            <span class="logo-circle">C</span> <!-- Logo circular adaptado, "C" por Carbono -->
         </div>
         <nav>
             <ul>
+                <li><a href="index.html">Intro</a></li>
                 <li><a href="quienes-somos.html">¿Quiénes somos?</a></li>
                 <li><a href="portafolio.html">Portafolio de Proyectos</a></li>
                 <li><a href="sponsors.html">Sponsors</a></li>
                 <li><a href="casos-exito.html">Casos de Éxito</a></li>
                 <li><a href="login.html" class="active">Iniciar sesión</a></li>
             </ul>
+            <!-- Agrega sociales si quieres: <div class="socials"><a href="#"><i class="fab fa-facebook-f"></i></a> ...</div> -->
         </nav>
     </header>
 
-    <!-- Sección de Introducción con Imagen -->
-    <section id="about" class="main-content">
-        <h2>Bienvenido a nuestra plataforma de trading de bonos de carbono</h2>
-        <p>Ofrecemos una plataforma moderna y segura para comprar, vender y rastrear bonos de carbono, contribuyendo al cuidado del medio ambiente.</p>
-        <img src="images/banner.jpg" alt="Imagen representativa del trading de bonos de carbono">
+    <!-- Sección Hero (como la plantilla: texto grande izquierda, imagen derecha) -->
+    <section class="hero">
+        <div class="hero-text">
+            <h1>Ofrecemos soluciones innovadoras para trading de bonos de carbono</h1>
+            <p>Transforma tus ideas en acciones sostenibles. Compra, vende y rastrea bonos de carbono de manera segura y eficiente, contribuyendo al cuidado del planeta.</p>
+            <a href="quienes-somos.html" class="cta-btn">Más sobre nosotros</a>
+        </div>
+        <div class="hero-image">
+            <img src="images/banner.jpg" alt="Imagen representativa del trading de bonos de carbono">
+        </div>
     </section>
 
     <!-- Sección de Servicios -->
