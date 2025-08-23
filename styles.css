@@ -79,16 +79,19 @@ header nav ul li a.active:hover {
     align-items: center;
     padding: 150px 50px 100px; /* Espacio para header fijo */
     min-height: 80vh;
+    overflow: hidden; /* Previene corte lateral si hay overflow */
 }
 
 .hero-text {
     flex: 1;
-    max-width: 50%;
+    max-width: 60%; /* Aumentado para más espacio y menos envoltura */
     padding-right: 50px;
+    word-break: break-word; /* Mejora envoltura de palabras largas */
+    hyphens: auto; /* Habilita guiones automáticos para mejor flujo */
 }
 
 .hero-text h1 {
-    font-size: 3.5rem; /* Grande como en la plantilla */
+    font-size: 3rem; /* Reducido ligeramente para menos líneas en envoltura */
     font-weight: 700;
     margin-bottom: 20px;
     line-height: 1.2;
